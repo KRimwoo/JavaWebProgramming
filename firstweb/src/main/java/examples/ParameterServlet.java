@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HelloServlet
+ * Servlet implementation class ParameterServlet
  */
-@WebServlet("/HelloServlet") //어노테이션 : url경로 설정 
-public class HelloServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L; //java 직렬화 프로토콜에서 사용되는 고유식별자 
+@WebServlet("/param")
+public class ParameterServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloServlet() {
+    public ParameterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +29,20 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html;charset=UTF-8");//응답 결과의 컨텐츠타입 알려줌 
-		PrintWriter out = response.getWriter(); //printWriter객체 반환
-		out.print("<h1>Hello servlet</h1>"); //print할 내용
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head><title>form</title></head>");
+		out.println("<body>");
 		
+		String name = request.getParameter("name"); //name파라미터의 값 가져옴  
+		String age = request.getParameter("age"); //age의 값 가져옴  
+		
+		out.println("name : " + name + "<br>");
+		out.println("age : " + age + "<br>");
+		
+		out.println("</body>");
+		out.println("</html>");
 	}
 
 }
